@@ -118,6 +118,9 @@ button{
 .popup img{ width:100%; }
 
 #line{
+  #line{
+  margin-top:10px;
+  font-size:16px;
   color:#ff4d88;
   font-weight:bold;
 }
@@ -248,14 +251,16 @@ function openLetter(el,n){
   },400);
 
   setTimeout(()=>{
-    document.getElementById("popup").style.display="block";
-    document.getElementById("photo").src=img[n-1];
-    document.getElementById("line").innerText=text[n-1];
+  document.getElementById("popup").style.display="block";
+  document.getElementById("photo").src=img[n-1];
+  document.getElementById("line").innerText=text[n-1];
 
-    el.classList.remove("open");
-    el.querySelector(".paper").innerHTML=text[n-1];
+  el.classList.remove("open");
 
-  },1000);
+  // reset paper
+  el.querySelector(".paper").innerHTML="💌";
+
+},1000);
 }
 
 function closePopup(){
