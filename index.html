@@ -115,40 +115,20 @@ button{
   border-radius:15px;
 }
 
-.popup img{ width:100%; }
-
+.popup img{ width:80%; }
+.popup img{
+  width:80%;
+  max-width:250px;
+  border-radius:12px;
+  display:block;
+  margin:auto;
+}
 #line{
-  #line{
-  margin-top:10px;
-  font-size:16px;
   color:#ff4d88;
   font-weight:bold;
 }
 
 /* flower */
-  function createFlower(){
-  const f=document.createElement("span");
-
-  // different flowers/emojis
-  const flowers=["🌸","🌺","🌼","🌷","💮","🌹","💐"];
-  f.innerHTML = flowers[Math.floor(Math.random()*flowers.length)];
-
-  // random position
-  f.style.left=Math.random()*100+"vw";
-
-  // random size
-  f.style.fontSize=(Math.random()*10+15)+"px";
-
-  // random speed
-  f.style.animationDuration=(Math.random()*3+3)+"s";
-
-  document.querySelector(".flowers")?.appendChild(f);
-
-  setTimeout(()=>f.remove(),6000);
-}
-
-// more smooth rain
-setInterval(createFlower,200);
 .flowers span{
   position:fixed;
   top:-10px;
@@ -194,16 +174,16 @@ setInterval(createFlower,200);
 
 <!-- LETTERS -->
 <div id="letters" class="page">
-  <h2>Open Koro🙈💖</h2>
+  <h2>Open Koro 🙈</h2>
 
   <div class="letters">
 
     <div class="letter" onclick="openLetter(this,1)">
-      <div class="paper">😁</div>
+      <div class="paper">😽</div>
     </div>
 
     <div class="letter" onclick="openLetter(this,2)">
-      <div class="paper">😽</div>
+      <div class="paper">😁</div>
     </div>
 
     <div class="letter" onclick="openLetter(this,3)">
@@ -211,7 +191,7 @@ setInterval(createFlower,200);
     </div>
 
     <div class="letter" onclick="openLetter(this,4)">
-      <div class="paper">😳</div>
+      <div class="paper">😗</div>
     </div>
 
     <div class="letter" onclick="openLetter(this,5)">
@@ -261,7 +241,7 @@ function openLetter(el,n){
   let text=[
     "Aaayyy haaayyy 🫠💖",
     "He He He He 😁",
-    "😗😗",
+    "😽😽",
     "😳🕶️🤏🏻",
     "Love you 🙈💕"
   ];
@@ -274,16 +254,14 @@ function openLetter(el,n){
   },400);
 
   setTimeout(()=>{
-  document.getElementById("popup").style.display="block";
-  document.getElementById("photo").src=img[n-1];
-  document.getElementById("line").innerText=text[n-1];
+    document.getElementById("popup").style.display="block";
+    document.getElementById("photo").src=img[n-1];
+    document.getElementById("line").innerText=text[n-1];
 
-  el.classList.remove("open");
+    el.classList.remove("open");
+    el.querySelector(".paper").innerHTML=text[n-1];
 
-  // reset paper
-  el.querySelector(".paper").innerHTML="💌";
-
-},1000);
+  },1000);
 }
 
 function closePopup(){
@@ -291,27 +269,6 @@ function closePopup(){
 }
 
 /* FLOWERS */
-  .flowers{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  overflow:hidden;
-}
-
-.flowers span{
-  position:absolute;
-  top:-20px;
-  animation:fall linear infinite;
-}
-
-@keyframes fall{
-  to{
-    transform:translateY(110vh) rotate(360deg);
-  }
-}
 function createFlower(){
   const f=document.createElement("span");
   f.innerHTML="🌸";
